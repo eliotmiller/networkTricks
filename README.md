@@ -1,13 +1,18 @@
 # networkTricks
 ## Code and sample data associated with our paper on dominance hierarchy of North American feeder birds
 
-These functions are introduced in [our biorxiv paper](http://biorxiv.org/content/early/2017/01/30/104133). More documentation is included in the help files for the functions. Example data is included with the R package, and the full dataset can be downloaded directly from [Project Feederwatch](http://feederwatch.org). A few example functions are highlighted here.
+These functions are introduced in [our biorxiv paper](http://biorxiv.org/content/early/2017/01/30/104133). More documentation is included in the help files for the functions. Example data is included with the R package, and the full dataset can be downloaded directly from [Project Feederwatch](http://feederwatch.org). A few example functions are highlighted below.
+
+### How do I get networkTricks?
 
 ```r
 library(devtools)
 install_github("networkTricks/eliotmiller")
 library(networkTricks)
 
+### What can I do with networkTricks?
+
+```r
 # calculate our slightly modified form of Bradley-Terry model dominance coefficients.
 # first load 1500 lines of sample interaction data from the larger FeederWatch dataset.
 data(exInput)
