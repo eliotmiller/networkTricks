@@ -9,7 +9,7 @@ install_github("networkTricks/eliotmiller")
 library(networkTricks)
 
 # calculate our slightly modified form of Bradley-Terry model dominance coefficients.
-# first load 1000 lines of sample interaction data from the larger FeederWatch dataset.
+# first load 1500 lines of sample interaction data from the larger FeederWatch dataset.
 data(exInput)
 
 # run the Bradley Terry function. takes a few seconds to run, can run in parallel.
@@ -43,3 +43,18 @@ simpleNetwork <- networkSimplifier(complexNetwork, 0.5, TRUE)
 
 # plot to see what it looks like
 plot(simpleNetwork)
+
+# here is an example of how to plot an attribute-ordered network, sensu [Hobson et al. (2015)](https://academic.oup.com/cz/article/61/1/55/1792913/The-effect-of-social-context-and-social-scale-on?searchresult=1). 
+# prep the object for plotting
+prepped <- prepAON(results, exInput)
+
+plotAON(prepped$prepped, dom.color="#00009985", sub.color="#CC000095", xlim=c(-1,-0.8),
+	vertex.size=0.1, vertex.color=NA, vertex.frame.color=NA, vertex.label.color="black",
+	vertex.label.cex=0.28, vertex.color="white", vertex.label.family="sans",
+	edge.width.scaler=10, edge.arrow.size=0, edge.curvature=TRUE)
+
+# easy to modify things such as edge width, color, and how much they curve
+plotAON(prepped$prepped, dom.color="#5ab4ac", sub.color="#d8b365", xlim=c(-1,-0.8),
+	vertex.size=0.1, vertex.color=NA, vertex.frame.color=NA, vertex.label.color="black",
+	vertex.label.cex=0.28, vertex.color="white", vertex.label.family="sans",
+	edge.width.scaler=6, edge.arrow.size=0, edge.curvature=2)
