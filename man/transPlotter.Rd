@@ -4,10 +4,13 @@
 \alias{transPlotter}
 \title{Plot function for transitivity results}
 \usage{
-transPlotter(results.list)
+transPlotter(results.list, color)
 }
 \arguments{
 \item{results.list}{A list of results from multiple calls to transitivityChecker.}
+
+\item{color}{Whether to plot each result in a different color, or a different
+line type.}
 }
 \value{
 An R plot.
@@ -57,7 +60,7 @@ threeSpp <- transCruncher(3, TRUE, tempdir())
 #bind together just the count results for plotting
 toPlot <- list(twoSpp$counts, threeSpp$counts)
 
-transPlotter(toPlot)
+transPlotter(toPlot, color=TRUE)
 }
 }
 \references{

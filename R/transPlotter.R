@@ -3,6 +3,8 @@
 #' Plot the summarized results from multiple calls to transitivityChecker.
 #'
 #' @param results.list A list of results from multiple calls to transitivityChecker.
+#' @param color Whether to plot each result in a different color, or a different
+#' line type.
 #'
 #' @details Uses a Brewer color palette to plot the results of multiple calls to
 #' transitivityChecker(). Each unique subnetwork size gets its own color.
@@ -57,12 +59,20 @@
 #' #bind together just the count results for plotting
 #' toPlot <- list(twoSpp$counts, threeSpp$counts)
 #'
-#' transPlotter(toPlot)
+#' transPlotter(toPlot, color=TRUE)
 #' }
 
-transPlotter <- function(results.list)
+transPlotter <- function(results.list, color)
 {
-	cols <- RColorBrewer::brewer.pal(n=length(results.list), "Set2")
+	if(color==TRUE)
+	{
+		cols <- RColorBrewer::brewer.pal(n=length(results.list), "Set2")
+	}
+
+	else
+	{
+		ltys <- 1:length(results.list)
+	}
 	
 	#quickly subset results.list to only those instances that do not have NA, to better
 	#get y lims
@@ -76,12 +86,28 @@ transPlotter <- function(results.list)
 	plot(results.list[[1]]$prop.false~results.list[[1]]$threshold, type="n",
 		ylim=c(yMin, yMax), xlab="Threshold", ylab="Proportion intransitive")
 
-	lines(results.list[[1]]$prop.false~results.list[[1]]$threshold,
+	if(color==TRUE)
+	{
+		lines(results.list[[1]]$prop.false~results.list[[1]]$threshold,
 			col=cols[1], lwd=5)
 
-	for(i in 2:length(results.list))
+		for(i in 2:length(results.list))
+		{
+			lines(results.list[[i]]$prop.false~results.list[[i]]$threshold,
+				col=cols[i], lwd=5)
+		}
+	}
+
+	else
 	{
-		lines(results.list[[i]]$prop.false~results.list[[i]]$threshold,
-			col=cols[i], lwd=5)
+		lines(results.list[[1]]$prop.false~results.list[[1]]$threshold,
+			lty=ltys[1], lwd=5)
+
+		for(i in 2:length(results.list))
+		{
+			lines(results.list[[i]]$prop.false~results.list[[i]]$threshold,
+				lty=ltys[i], lwd=5)
+		}
+
 	}
 }
