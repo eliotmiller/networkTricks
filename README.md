@@ -9,6 +9,7 @@ These functions are introduced in [our biorxiv paper](http://biorxiv.org/content
 library(devtools)
 install_github("networkTricks/eliotmiller")
 library(networkTricks)
+```
 
 ### What can I do with networkTricks?
 
