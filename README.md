@@ -11,10 +11,9 @@ install_github("networkTricks/eliotmiller")
 library(networkTricks)
 ```
 
-### What can I do with networkTricks?
+### Calculate our slightly modified form of Bradley-Terry model dominance coefficients
 
 ```r
-# calculate our slightly modified form of Bradley-Terry model dominance coefficients.
 # first load 1500 lines of sample interaction data from the larger FeederWatch dataset.
 data(exInput)
 
@@ -33,7 +32,11 @@ for(i in 1:length(results))
 
 # here are the species' level dominance coefficients
 results
+```
 
+### Threshold interactions between species
+
+```r
 # here's an example of how to threshold a network, e.g. interactions between three species.
 three <- c("Red-breasted Nuthatch","Downy Woodpecker","White-breasted Nuthatch")
 small <- exInput[exInput$source %in% three & exInput$target %in% three,]
@@ -49,9 +52,11 @@ simpleNetwork <- networkSimplifier(complexNetwork, 0.5, TRUE)
 
 # plot to see what it looks like
 plot(simpleNetwork)
+```
 
-# here is an example of how to plot an attribute-ordered network, sensu [Hobson et al. (2015)](https://academic.oup.com/cz/article/61/1/55/1792913/The-effect-of-social-context-and-social-scale-on?searchresult=1). 
-# prep the object for plotting
+### Plot an attribute-ordered network sensu [Hobson et al. (2015)](https://academic.oup.com/cz/article/61/1/55/1792913/The-effect-of-social-context-and-social-scale-on?searchresult=1)
+
+# this relies on the results object defined above. first prep the object for plotting
 prepped <- prepAON(results, exInput)
 
 plotAON(prepped$prepped, dom.color="#00009985", sub.color="#CC000095", xlim=c(-1,-0.8),
