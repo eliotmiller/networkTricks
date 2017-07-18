@@ -56,6 +56,7 @@ plot(simpleNetwork)
 
 ### Plot an attribute-ordered network sensu [Hobson et al. (2015)](https://academic.oup.com/cz/article/61/1/55/1792913/The-effect-of-social-context-and-social-scale-on?searchresult=1)
 
+```r
 # this relies on the results object defined above. first prep the object for plotting
 prepped <- prepAON(results, exInput)
 
@@ -69,3 +70,4 @@ plotAON(prepped$prepped, dom.color="#5ab4ac", sub.color="#d8b365", xlim=c(-1,-0.
 	vertex.size=0.1, vertex.color=NA, vertex.frame.color=NA, vertex.label.color="black",
 	vertex.label.cex=0.28, vertex.color="white", vertex.label.family="sans",
 	edge.width.scaler=6, edge.arrow.size=0, edge.curvature=2)
+```
