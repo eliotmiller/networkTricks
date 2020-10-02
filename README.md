@@ -7,7 +7,7 @@ These functions are introduced in [our biorxiv paper](http://biorxiv.org/content
 
 ```r
 library(devtools)
-install_github("networkTricks/eliotmiller")
+install_github("eliotmiller/networkTricks")
 library(networkTricks)
 ```
 
